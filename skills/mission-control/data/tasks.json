@@ -77,7 +77,7 @@
       "id": "daily_003",
       "title": "📊 设置自动化日报",
       "description": "将 Mission Control 与日报系统集成，自动报告任务完成情况。",
-      "status": "backlog",
+      "status": "review",
       "priority": "low",
       "subtasks": [
         {
@@ -98,10 +98,15 @@
           "author": "MoltBot",
           "text": "🤖 Processing started",
           "createdAt": "2026-03-12T17:51:30.406060Z"
+        },
+        {
+          "id": "c2",
+          "author": "MoltBot",
+          "text": "日报集成已完成。创建了统计脚本，设置了每日9:00和18:00自动生成任务统计，统计结果将用于日报生成。",
+          "createdAt": "2026-03-12T17:52:43.161155Z"
         }
       ],
-      "createdAt": "2026-03-12T09:28:00Z",
-      "processingStartedAt": "2026-03-12T17:51:30.406060Z"
+      "createdAt": "2026-03-12T09:28:00Z"
     },
     {
       "id": "lang_004",
