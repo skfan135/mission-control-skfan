@@ -5,16 +5,16 @@ AI 任务管理看板系统
 ## 快速开始
 
 1. 访问 [GitHub Pages](https://skfan135.github.io/mission-control-skfan/)
-2. 查看和拖拽任务卡片
-3. 任务状态会自动同步
+2. 中文版直接访问：[中文版](https://skfan135.github.io/mission-control-skfan/index-zh.html)
+3. 查看和拖拽任务卡片
+4. 任务状态会自动同步
 
 ## 任务状态
 
-- **Permanent** - 永久性任务（如每日检查）
-- **Backlog** - 待办任务
-- **In Progress** - 🤖 AI 正在执行
-- **Review** - 等待审核
-- **Done** - 已完成
+- **待办** - 准备开始的任务
+- **进行中** - 🤖 AI 正在执行
+- **待审核** - 完成但需要人工确认
+- **已完成** - 任务完成并已确认
 
 ## 自动化
 
