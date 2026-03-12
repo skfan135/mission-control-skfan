@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Control - 小龙虾 🦞</title>
+    <style>
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #262626;
+            --bg-modal: #1f1f1f;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --border: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .btn:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: flex;
+            height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .kanban-board {
+            flex: 1;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1rem;
+        }
+
+        /* Columns */
+        .columns {
+            display: flex;
+            gap: 1rem;
+            min-width: fit-content;
+            height: 100%;
+        }
+
+        .column {
+            min-width: 300px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .column-tasks {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            min-height: 200px;
+        }
+
+        .column-footer {
+            padding: 0.5rem 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+        }
+
+        .column-add {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .column-add:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        /* Task Cards */
+        .task-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+            cursor: grab;
+            transition: all 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+
+        .task-card.dragging {
+            opacity: 0.4;
+            cursor: grabbing;
+        }
+
+        .task-card.processing {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+
+        .task-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .task-priority {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .priority-high { background: var(--accent-red); }
+        .priority-medium { background: var(--accent-yellow); }
+        .priority-low { background: var(--accent-green); }
+
+        .task-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .task-subtasks {
+            margin-bottom: 0.75rem;
+        }
+
+        .subtask-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .subtask-item input[type="checkbox"] {
+            accent-color: var(--accent-blue);
+        }
+
+        .subtask-title {
+            flex: 1;
+        }
+
+        .subtask-title.done {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+        }
+
+        .task-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .task-card:hover .task-actions {
+            opacity: 1;
+        }
+
+        .task-action-btn {
+            padding: 0.25rem 0.5rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .task-action-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-modal);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-title {
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Draggable feedback */
+        .drag-over {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px dashed var(--accent-blue);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-title">
+                🦞 小龙虾的任务控制台
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="btn" onclick="autoSave()">💾 保存</button>
+            <button class="btn btn-primary" onclick="openNewTask()">➕ 新任务</button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="stats-panel">
+                <h3 class="stats-title">📊 今日统计</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-total">0</div>
+                        <div class="stat-label">总计任务</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-progress">0</div>
+                        <div class="stat-label">进行中</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-review">0</div>
+                        <div class="stat-label">待审核</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-done">0</div>
+                        <div class="stat-label">已完成</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-secondary);">📋 快速筛选</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button class="btn" onclick="filterTasks('all')">全部任务</button>
+                <button class="btn" onclick="filterTasks('high')">高优先级</button>
+                <button class="btn" onclick="filterTasks('medium')">中优先级</button>
+                <button class="btn" onclick="filterTasks('low')">低优先级</button>
+            </div>
+        </aside>
+
+        <main class="kanban-board">
+            <div class="columns">
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-dot backlog" style="background: var(--accent-yellow); width: 8px; height: 8px; border-radius: 50%;"></div>
+                        <h2>待办</h2>
+                        <span class="column-count" id="count-backlog">0</span>
+                    </div>
+                    <div class="column-tasks" id="tasks-backlog" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'backlog')"></div>
+                    <div class="column-footer">
+                        <span class="column-add" onclick="openNewTask('backlog')" title="添加新任务">+</span>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-dot" style="background: var(--accent-blue); width: 8px; height: 8px; border-radius: 50%;"></div>
+                        <h2>🤖 执行中</h2>
+                        <span class="column-count" id="count-in_progress">0</span>
+                    </div>
+                    <div class="column-tasks" id="tasks-in_progress" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'in_progress')"></div>
+                    <div class="column-footer">
+                        <span class="column-add" onclick="openNewTask('in_progress')" title="添加新任务">+</span>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-dot" style="background: var(--accent-green); width: 8px; height: 8px; border-radius: 50%;"></div>
+                        <h2>待审核</h2>
+                        <span class="column-count" id="count-review">0</span>
+                    </div>
+                    <div class="column-tasks" id="tasks-review" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'review')"></div>
+                    <div class="column-footer">
+                        <span class="column-add" onclick="openNewTask('review')" title="添加新任务">+</span>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-dot" style="background: #6b7280; width: 8px; height: 8px; border-radius: 50%;"></div>
+                        <h2>✅ 已完成</h2>
+                        <span class="column-count" id="count-done">0</span>
+                    </div>
+                    <div class="column-tasks" id="tasks-done" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'done')"></div>
+                    <div class="column-footer">
+                        <span class="column-add" onclick="openNewTask('done')" title="添加新任务">+</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">新建任务</h2>
+            </div>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label class="form-label" for="task-title">任务标题</label>
+                    <input type="text" id="task-title" class="form-input" placeholder="输入任务标题..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="task-description">任务描述</label>
+                    <textarea id="task-description" class="form-textarea" placeholder="详细描述任务内容..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="task-priority">优先级</label>
+                    <select id="task-priority" class="form-select">
+                        <option value="low">低</option>
+                        <option value="medium" selected>中</option>
+                        <option value="high">高</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="task-status">状态</label>
+                    <select id="task-status" class="form-select">
+                        <option value="backlog" selected>待办</option>
+                        <option value="in_progress">进行中</option>
+                        <option value="review">待审核</option>
+                        <option value="done">已完成</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal()">取消</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let STATE = {
+            data: {
+                tasks: []
+            },
+            currentTask: null,
+            draggedTask: null,
+            filter: 'all'
+        };
+
+        // Load data from localStorage
+        function loadData() {
+            const saved = localStorage.getItem('mission-control-data');
+            if (saved) {
+                STATE.data = JSON.parse(saved);
+            }
+            renderTasks();
+            updateStats();
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('mission-control-data', JSON.stringify(STATE.data));
+            updateStats();
+        }
+
+        // Render tasks
+        function renderTasks() {
+            const columns = ['backlog', 'in_progress', 'review', 'done'];
+            
+            columns.forEach(status => {
+                const container = document.getElementById(`tasks-${status}`);
+                const tasks = STATE.data.tasks.filter(t => t.status === status);
+                
+                container.innerHTML = '';
+                
+                tasks.forEach(task => {
+                    const taskCard = createTaskCard(task);
+                    container.appendChild(taskCard);
+                });
+                
+                document.getElementById(`count-${status}`).textContent = tasks.length;
+            });
+        }
+
+        // Create task card element
+        function createTaskCard(task) {
+            const card = document.createElement('div');
+            card.className = 'task-card';
+            if (task.processingStartedAt || task.processing) {
+                card.classList.add('processing');
+            }
+            card.draggable = true;
+            card.dataset.taskId = task.id;
+            
+            // Priority dot
+            const priorityClass = `priority-${task.priority || 'medium'}`;
+            
+            // Subtasks
+            const subtasksHtml = task.subtasks ? task.subtasks.map(sub => `
+                <div class="subtask-item">
+                    <input type="checkbox" ${sub.done ? 'checked' : ''} onchange="toggleSubtask('${task.id}', '${sub.id}')">
+                    <span class="subtask-title ${sub.done ? 'done' : ''}">${sub.title}</span>
+                </div>
+            `).join('') : '';
+            
+            card.innerHTML = `
+                <div class="task-header">
+                    <div class="task-title">
+                        <span class="task-priority ${priorityClass}"></span>
+                        ${task.title}
+                    </div>
+                </div>
+                ${task.description ? `<div class="task-description">${task.description}</div>` : ''}
+                ${subtasksHtml ? `<div class="task-subtasks">${subtasksHtml}</div>` : ''}
+                <div class="task-footer">
+                    <span class="task-date">${task.createdAt ? new Date(task.createdAt).toLocaleDateString('zh-CN') : ''}</span>
+                    <div class="task-actions">
+                        <button class="task-action-btn" onclick="editTask('${task.id}')">编辑</button>
+                        <button class="task-action-btn" onclick="deleteTask('${task.id}')">删除</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add drag event listeners
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+            
+            return card;
+        }
+
+        // Drag and Drop handlers
+        function handleDragStart(e) {
+            const taskId = e.target.dataset.taskId;
+            STATE.draggedTask = STATE.data.tasks.find(t => t.id === taskId);
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            STATE.draggedTask = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.remove('drag-over');
+            }
+        }
+
+        function handleDrop(e, newStatus) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            
+            if (STATE.draggedTask) {
+                const oldStatus = STATE.draggedTask.status;
+                if (oldStatus !== newStatus) {
+                    STATE.draggedTask.status = newStatus;
+                    
+                    // Add processing marker if moving to in_progress
+                    if (newStatus === 'in_progress') {
+                        STATE.draggedTask.processingStartedAt = new Date().toISOString();
+                    } else if (oldStatus === 'in_progress') {
+                        delete STATE.draggedTask.processingStartedAt;
+                    }
+                    
+                    saveData();
+                    renderTasks();
+                }
+            }
+        }
+
+        // Modal functions
+        function openNewTask(status = 'backlog') {
+            STATE.currentTask = null;
+            document.getElementById('modalTitle').textContent = '新建任务';
+            document.getElementById('task-title').value = '';
+            document.getElementById('task-description').value = '';
+            document.getElementById('task-priority').value = 'medium';
+            document.getElementById('task-status').value = status;
+            document.getElementById('taskModal').classList.add('active');
+        }
+
+        function editTask(taskId) {
+            const task = STATE.data.tasks.find(t => t.id === taskId);
+            if (task) {
+                STATE.currentTask = task;
+                document.getElementById('modalTitle').textContent = '编辑任务';
+                document.getElementById('task-title').value = task.title;
+                document.getElementById('task-description').value = task.description || '';
+                document.getElementById('task-priority').value = task.priority || 'medium';
+                document.getElementById('task-status').value = task.status;
+                document.getElementById('taskModal').classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('taskModal').classList.remove('active');
+            STATE.currentTask = null;
+        }
+
+        // Form submission
+        document.getElementById('taskForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const taskData = {
+                id: STATE.currentTask ? STATE.currentTask.id : 'task_' + Date.now(),
+                title: document.getElementById('task-title').value,
+                description: document.getElementById('task-description').value,
+                priority: document.getElementById('task-priority').value,
+                status: document.getElementById('task-status').value,
+                createdAt: STATE.currentTask ? STATE.currentTask.createdAt : new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+            
+            if (STATE.currentTask) {
+                // Update existing task
+                const index = STATE.data.tasks.findIndex(t => t.id === taskData.id);
+                STATE.data.tasks[index] = { ...STATE.currentTask, ...taskData };
+            } else {
+                // Add new task
+                STATE.data.tasks.push(taskData);
+            }
+            
+            saveData();
+            renderTasks();
+            closeModal();
+        });
+
+        // Delete task
+        function deleteTask(taskId) {
+            if (confirm('确定要删除这个任务吗？')) {
+                STATE.data.tasks = STATE.data.tasks.filter(t => t.id !== taskId);
+                saveData();
+                renderTasks();
+            }
+        }
+
+        // Toggle subtask
+        function toggleSubtask(taskId, subtaskId) {
+            const task = STATE.data.tasks.find(t => t.id === taskId);
+            if (task && task.subtasks) {
+                const subtask = task.subtasks.find(s => s.id === subtaskId);
+                if (subtask) {
+                    subtask.done = !subtask.done;
+                    saveData();
+                    renderTasks();
+                }
+            }
+        }
+
+        // Filter tasks
+        function filterTasks(filter) {
+            STATE.filter = filter;
+            const tasks = document.querySelectorAll('.task-card');
+            
+            tasks.forEach(card => {
+                const task = STATE.data.tasks.find(t => t.id === card.dataset.taskId);
+                if (!task) return;
+                
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = task.priority === filter ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Update statistics
+        function updateStats() {
+            const tasks = STATE.data.tasks;
+            const total = tasks.filter(t => t.status !== 'done').length;
+            const inProgress = tasks.filter(t => t.status === 'in_progress').length;
+            const review = tasks.filter(t => t.status === 'review').length;
+            const done = tasks.filter(t => t.status === 'done').length;
+            
+            document.getElementById('stat-total').textContent = total;
+            document.getElementById('stat-progress').textContent = inProgress;
+            document.getElementById('stat-review').textContent = review;
+            document.getElementById('stat-done').textContent = done;
+        }
+
+        // Auto save
+        let saveTimeout;
+        function autoSave() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                saveData();
+                console.log('已保存');
+            }, 500);
+        }
+
+        // Initialize
+        loadData();
+        
+        // Auto save every 30 seconds
+        setInterval(autoSave, 30000);
+    </script>
+</body>
+</html>
