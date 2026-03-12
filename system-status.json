@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-03-12T18:46:00+08:00",
+  "uptime": "10:20 hours",
+  "load_average": {
+    "1min": 2.16,
+    "5min": 2.08,
+    "15min": 2.00
+  },
+  "cpu": {
+    "model": "Intel(R) Xeon(R) Platinum 8255C CPU @ 2.50GHz",
+    "cores": 2,
+    "threads": 2,
+    "usage": {
+      "user": 27.3,
+      "system": 50.0,
+      "idle": 27.3,
+      "iowait": 0.0
+    }
+  },
+  "memory": {
+    "total": "1.9Gi",
+    "used": "1.0Gi",
+    "free": "118Mi",
+    "available": "923Mi",
+    "swap": {
+      "total": "9.9Gi",
+      "used": "64Mi",
+      "free": "9.9Gi"
+    }
+  },
+  "disk": {
+    "/": {
+      "total": "50G",
+      "used": "19G",
+      "free": "29G",
+      "usage_percent": 40
+    }
+  },
+  "top_processes_by_memory": [
+    {
+      "name": "openclaw-gateway",
+      "pid": 383237,
+      "mem_percent": 27.2,
+      "mem_mb": 549
+    },
+    {
+      "name": "YDEyes",
+      "pid": 2100,
+      "mem_percent": 4.0,
+      "mem_mb": 81
+    },
+    {
+      "name": "tailscaled",
+      "pid": 470114,
+      "mem_percent": 3.8,
+      "mem_mb": 78
+    }
+  ],
+  "running_services": [
+    "openclaw-gateway (main service)",
+    "tailscaled (VPN)",
+    "http.server (port 8080 - Mission Control)",
+    "YDEyes (security)",
+    "YDLive (monitoring)"
+  ],
+  "summary": {
+    "status": "normal",
+    "warnings": [
+      "CPU usage is moderately high (77.3% combined)",
+      "Memory usage is at 50%"
+    ],
+    "recommendations": [
+      "Monitor CPU usage - possible ongoing processes",
+      "System is running within normal parameters"
+    ]
+  }
+}

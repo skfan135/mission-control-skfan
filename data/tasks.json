@@ -48,20 +48,57 @@
       "completedAt": "2026-03-12T09:52:00Z"
     },
     {
+      "id": "lang_004",
+      "title": "🌐 完成中英迁移",
+      "description": "将英文版的所有任务数据迁移到中文版，并清理冗余文件。",
+      "status": "done",
+      "priority": "high",
+      "subtasks": [
+        {"id": "sub_009", "title": "备份英文版数据", "done": true},
+        {"id": "sub_010", "title": "创建中文版数据文件", "done": true},
+        {"id": "sub_011", "title": "修改中文版页面引用", "done": true},
+        {"id": "sub_012", "title": "删除英文版文件", "done": true},
+        {"id": "sub_013", "title": "验证迁移完成状态", "done": true},
+        {"id": "sub_014", "title": "修复任务同步问题", "done": true}
+      ],
+      "dod": "只保留中文版，数据完整无丢失，任务状态正确同步",
+      "comments": [],
+      "createdAt": "2026-03-12T09:37:00Z",
+      "completedAt": "2026-03-12T09:38:00Z"
+    },
+    {
       "id": "auto_005",
       "title": "🤖 实现自动化工作流",
       "description": "创建任务自动处理系统，当任务进入特定状态时触发相应的自动化操作。",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "subtasks": [
         {"id": "sub_015", "title": "创建 AI 任务处理器脚本", "done": true},
-        {"id": "sub_016", "title": "实现任务状态监听", "done": false},
-        {"id": "sub_017", "title": "集成 webhook 触发器", "done": false},
-        {"id": "sub_018", "title": "添加任务执行日志", "done": false}
+        {"id": "sub_016", "title": "实现任务状态监听", "done": true},
+        {"id": "sub_017", "title": "集成 webhook 触发器", "done": true},
+        {"id": "sub_018", "title": "添加任务执行日志", "done": true}
       ],
       "dod": "任务移至进行中时自动执行，执行结果自动更新",
       "comments": [],
-      "createdAt": "2026-03-12T09:53:00Z"
+      "createdAt": "2026-03-12T09:53:00Z",
+      "completedAt": "2026-03-12T09:56:00Z"
+    },
+    {
+      "id": "monitor_008",
+      "title": "📈 创建资源监控系统",
+      "description": "开发服务器资源监控工具，生成可视化的资源使用报告。",
+      "status": "done",
+      "priority": "medium",
+      "subtasks": [
+        {"id": "sub_027", "title": "创建 ASCII 艺术图表", "done": true},
+        {"id": "sub_028", "title": "生成 HTML 可视化报告", "done": true},
+        {"id": "sub_029", "title": "支持实时数据更新", "done": true},
+        {"id": "sub_030", "title": "添加自动截图功能", "done": false}
+      ],
+      "dod": "能生成美观的资源使用图表",
+      "comments": [],
+      "createdAt": "2026-03-12T09:56:00Z",
+      "completedAt": "2026-03-12T09:57:00Z"
     },
     {
       "id": "view_006",
