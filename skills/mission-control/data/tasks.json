@@ -80,7 +80,7 @@
       "id": "lang_004",
       "title": "🌐 完成中英迁移",
       "description": "将英文版的所有任务数据迁移到中文版，并清理冗余文件。",
-      "status": "in_progress",
+      "status": "review",
       "priority": "high",
       "subtasks": [
         {
@@ -120,6 +120,12 @@
           "id": "c001",
           "text": "注意：任务状态迁移可能需要手动验证",
           "timestamp": "2026-03-12T09:42:00Z"
+        },
+        {
+          "id": "c2",
+          "author": "MoltBot",
+          "text": "中文版迁移已完成，删除了英文版文件，保留了所有任务数据。验证了任务同步功能正常。",
+          "createdAt": "2026-03-12T17:45:24.548468Z"
         }
       ],
       "createdAt": "2026-03-12T09:37:00Z"
