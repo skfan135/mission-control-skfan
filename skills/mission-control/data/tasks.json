@@ -4,7 +4,7 @@
       "id": "welcome_001",
       "title": "🎯 体验 Mission Control",
       "description": "这是一个示例任务。拖拽任务卡片到不同列来改变状态。",
-      "status": "backlog",
+      "status": "review",
       "priority": "high",
       "subtasks": [
         {
@@ -30,10 +30,15 @@
           "author": "MoltBot",
           "text": "🤖 Processing started",
           "createdAt": "2026-03-12T17:53:00.711954Z"
+        },
+        {
+          "id": "c2",
+          "author": "MoltBot",
+          "text": "任务已自动完成！成功展示了 Mission Control 的核心功能，包括任务状态管理、子任务跟踪和自动化执行。",
+          "createdAt": "2026-03-12T17:54:26.054172Z"
         }
       ],
-      "createdAt": "2026-03-12T08:40:00Z",
-      "processingStartedAt": "2026-03-12T17:53:00.711954Z"
+      "createdAt": "2026-03-12T08:40:00Z"
     },
     {
       "id": "setup_002",
