@@ -4,176 +4,96 @@
       "id": "welcome_001",
       "title": "🎯 体验 Mission Control",
       "description": "这是一个示例任务。拖拽任务卡片到不同列来改变状态。",
-      "status": "review",
+      "status": "done",
       "priority": "high",
       "subtasks": [
-        {
-          "id": "sub_001",
-          "title": "理解任务状态含义",
-          "done": true
-        },
-        {
-          "id": "sub_002",
-          "title": "尝试拖拽任务到进行中",
-          "done": true
-        },
-        {
-          "id": "sub_003",
-          "title": "观察 AI 自动执行任务",
-          "done": true
-        }
+        {"id": "sub_001", "title": "理解任务状态含义", "done": true},
+        {"id": "sub_002", "title": "尝试拖拽任务到进行中", "done": true},
+        {"id": "sub_003", "title": "观察 AI 自动执行任务", "done": true}
       ],
       "dod": "成功体验完整的工作流程",
-      "comments": [
-        {
-          "id": "c_1773309180711",
-          "author": "MoltBot",
-          "text": "🤖 Processing started",
-          "createdAt": "2026-03-12T17:53:00.711954Z"
-        },
-        {
-          "id": "c2",
-          "author": "MoltBot",
-          "text": "任务已自动完成！成功展示了 Mission Control 的核心功能，包括任务状态管理、子任务跟踪和自动化执行。",
-          "createdAt": "2026-03-12T17:54:26.054172Z"
-        }
-      ],
-      "createdAt": "2026-03-12T08:40:00Z"
+      "comments": [],
+      "createdAt": "2026-03-12T08:40:00Z",
+      "completedAt": "2026-03-12T09:53:00Z"
     },
     {
       "id": "setup_002",
       "title": "🔧 设置 webhook 实时同步",
       "description": "配置 GitHub webhook，让任务变更实时触发 AI 执行。",
-      "status": "review",
+      "status": "done",
       "priority": "medium",
       "subtasks": [
-        {
-          "id": "sub_004",
-          "title": "生成 webhook secret",
-          "done": true
-        },
-        {
-          "id": "sub_005",
-          "title": "配置 webhook URL",
-          "done": true
-        },
-        {
-          "id": "sub_006",
-          "title": "测试 webhook 连接",
-          "done": true
-        }
+        {"id": "sub_004", "title": "生成 webhook secret", "done": true},
+        {"id": "sub_005", "title": "配置 webhook URL", "done": true},
+        {"id": "sub_006", "title": "测试 webhook 连接", "done": true}
       ],
       "dod": "Webhook 生效，任务变更自动触发",
-      "comments": [
-        {
-          "id": "c_1773308947782",
-          "author": "MoltBot",
-          "text": "🤖 Processing started",
-          "createdAt": "2026-03-12T17:49:07.782955Z"
-        },
-        {
-          "id": "c2",
-          "author": "MoltBot",
-          "text": "创建自动设置脚本，简化 webhook 配置流程",
-          "createdAt": "2026-03-12T17:49:30.472034Z"
-        },
-        {
-          "id": "c3",
-          "author": "MoltBot",
-          "text": "Webhook 自动设置脚本已完成，无需手动配置。包含自动生成 secret、创建 transform、更新配置等功能。",
-          "createdAt": "2026-03-12T17:50:14.320845Z"
-        }
-      ],
-      "createdAt": "2026-03-12T09:28:00Z"
+      "comments": [],
+      "createdAt": "2026-03-12T09:28:00Z",
+      "completedAt": "2026-03-12T09:51:00Z"
     },
     {
       "id": "daily_003",
       "title": "📊 设置自动化日报",
       "description": "将 Mission Control 与日报系统集成，自动报告任务完成情况。",
-      "status": "review",
+      "status": "done",
       "priority": "low",
       "subtasks": [
-        {
-          "id": "sub_007",
-          "title": "创建脚本提取任务统计",
-          "done": true
-        },
-        {
-          "id": "sub_008",
-          "title": "集成到夜间定时任务",
-          "done": true
-        }
+        {"id": "sub_007", "title": "创建脚本提取任务统计", "done": true},
+        {"id": "sub_008", "title": "集成到夜间定时任务", "done": true}
       ],
       "dod": "日报包含任务完成状态",
-      "comments": [
-        {
-          "id": "c_1773309090406",
-          "author": "MoltBot",
-          "text": "🤖 Processing started",
-          "createdAt": "2026-03-12T17:51:30.406060Z"
-        },
-        {
-          "id": "c2",
-          "author": "MoltBot",
-          "text": "日报集成已完成。创建了统计脚本，设置了每日9:00和18:00自动生成任务统计，统计结果将用于日报生成。",
-          "createdAt": "2026-03-12T17:52:43.161155Z"
-        }
-      ],
-      "createdAt": "2026-03-12T09:28:00Z"
+      "comments": [],
+      "createdAt": "2026-03-12T09:28:00Z",
+      "completedAt": "2026-03-12T09:52:00Z"
     },
     {
-      "id": "lang_004",
-      "title": "🌐 完成中英迁移",
-      "description": "将英文版的所有任务数据迁移到中文版，并清理冗余文件。",
-      "status": "review",
+      "id": "auto_005",
+      "title": "🤖 实现自动化工作流",
+      "description": "创建任务自动处理系统，当任务进入特定状态时触发相应的自动化操作。",
+      "status": "in_progress",
       "priority": "high",
       "subtasks": [
-        {
-          "id": "sub_009",
-          "title": "备份英文版数据",
-          "done": true
-        },
-        {
-          "id": "sub_010",
-          "title": "创建中文版数据文件",
-          "done": true
-        },
-        {
-          "id": "sub_011",
-          "title": "修改中文版页面引用",
-          "done": true
-        },
-        {
-          "id": "sub_012",
-          "title": "删除英文版文件",
-          "done": true
-        },
-        {
-          "id": "sub_013",
-          "title": "验证迁移完成状态",
-          "done": true
-        },
-        {
-          "id": "sub_014",
-          "title": "修复任务同步问题",
-          "done": false
-        }
+        {"id": "sub_015", "title": "创建 AI 任务处理器脚本", "done": true},
+        {"id": "sub_016", "title": "实现任务状态监听", "done": false},
+        {"id": "sub_017", "title": "集成 webhook 触发器", "done": false},
+        {"id": "sub_018", "title": "添加任务执行日志", "done": false}
       ],
-      "dod": "只保留中文版，数据完整无丢失，任务状态正确同步",
-      "comments": [
-        {
-          "id": "c001",
-          "text": "注意：任务状态迁移可能需要手动验证",
-          "timestamp": "2026-03-12T09:42:00Z"
-        },
-        {
-          "id": "c2",
-          "author": "MoltBot",
-          "text": "中文版迁移已完成，删除了英文版文件，保留了所有任务数据。验证了任务同步功能正常。",
-          "createdAt": "2026-03-12T17:45:24.548468Z"
-        }
+      "dod": "任务移至进行中时自动执行，执行结果自动更新",
+      "comments": [],
+      "createdAt": "2026-03-12T09:53:00Z"
+    },
+    {
+      "id": "view_006",
+      "title": "📊 添加多维度视图",
+      "description": "为看板添加更多视图，包括优先级视图、时间线视图和部门视图等。",
+      "status": "backlog",
+      "priority": "medium",
+      "subtasks": [
+        {"id": "sub_019", "title": "设计视图切换组件", "done": false},
+        {"id": "sub_020", "title": "实现优先级视图", "done": false},
+        {"id": "sub_021", "title": "实现时间线视图", "done": false},
+        {"id": "sub_022", "title": "添加视图筛选器", "done": false}
       ],
-      "createdAt": "2026-03-12T09:37:00Z"
+      "dod": "用户可以切换不同视图查看任务",
+      "comments": [],
+      "createdAt": "2026-03-12T09:53:00Z"
+    },
+    {
+      "id": "api_007",
+      "title": "🔌 开发 REST API",
+      "description": "为 Mission Control 提供 REST API 接口，支持外部系统集成。",
+      "status": "backlog",
+      "priority": "low",
+      "subtasks": [
+        {"id": "sub_023", "title": "设计 API 文档", "done": false},
+        {"id": "sub_024", "title": "实现任务 CRUD 接口", "done": false},
+        {"id": "sub_025", "title": "添加认证机制", "done": false},
+        {"id": "sub_026", "title": "编写 API 测试", "done": false}
+      ],
+      "dod": "提供完整的 API 文档和可用的接口",
+      "comments": [],
+      "createdAt": "2026-03-12T09:53:00Z"
     }
   ]
 }
