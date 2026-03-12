@@ -92,8 +92,16 @@
         }
       ],
       "dod": "日报包含任务完成状态",
-      "comments": [],
-      "createdAt": "2026-03-12T09:28:00Z"
+      "comments": [
+        {
+          "id": "c_1773309090406",
+          "author": "MoltBot",
+          "text": "🤖 Processing started",
+          "createdAt": "2026-03-12T17:51:30.406060Z"
+        }
+      ],
+      "createdAt": "2026-03-12T09:28:00Z",
+      "processingStartedAt": "2026-03-12T17:51:30.406060Z"
     },
     {
       "id": "lang_004",
