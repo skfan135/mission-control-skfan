@@ -2,17 +2,47 @@
   "tasks": [
     {
       "id": "welcome_001",
-      "title": "欢迎使用 Mission Control",
-      "description": "这是一个示例任务。拖拽任务卡片来改变状态。",
+      "title": "🎯 体验 Mission Control",
+      "description": "这是一个示例任务。拖拽任务卡片到不同列来改变状态。",
+      "status": "backlog",
+      "priority": "high",
+      "subtasks": [
+        {"id": "sub_001", "title": "理解任务状态含义", "done": false},
+        {"id": "sub_002", "title": "尝试拖拽任务到 In Progress", "done": false},
+        {"id": "sub_003", "title": "观察 AI 自动执行任务", "done": false}
+      ],
+      "dod": "成功体验完整的工作流程",
+      "comments": [],
+      "createdAt": "2026-03-12T08:40:00Z"
+    },
+    {
+      "id": "setup_002",
+      "title": "🔧 设置 webhook 实时同步",
+      "description": "配置 GitHub webhook，让任务变更实时触发 AI 执行。",
       "status": "backlog",
       "priority": "medium",
       "subtasks": [
-        {"id": "sub_001", "title": "了解看板系统", "done": false},
-        {"id": "sub_002", "title": "尝试拖拽任务", "done": false}
+        {"id": "sub_004", "title": "生成 webhook secret", "done": false},
+        {"id": "sub_005", "title": "配置 webhook URL", "done": false},
+        {"id": "sub_006", "title": "测试 webhook 连接", "done": false}
       ],
-      "dod": "成功操作看板并理解工作流",
+      "dod": "Webhook 生效，任务变更自动触发",
       "comments": [],
-      "createdAt": "2026-03-12T08:40:00Z"
+      "createdAt": "2026-03-12T09:28:00Z"
+    },
+    {
+      "id": "daily_003",
+      "title": "📊 设置自动化日报",
+      "description": "将 Mission Control 与日报系统集成，自动报告任务完成情况。",
+      "status": "permanent",
+      "priority": "low",
+      "subtasks": [
+        {"id": "sub_007", "title": "创建脚本提取任务统计", "done": false},
+        {"id": "sub_008", "title": "集成到 nightly cron", "done": false}
+      ],
+      "dod": "日报包含任务完成状态",
+      "comments": [],
+      "createdAt": "2026-03-12T09:28:00Z"
     }
   ]
 }
