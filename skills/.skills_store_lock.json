@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "memory-distiller": {
+      "name": "Memory Distiller",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=memory-distiller",
+      "source": "skillhub",
+      "version": "1.0.1"
+    },
+    "daily-report-joig": {
+      "name": "Daily Report Joig",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=daily-report-joig",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "elevenlabs-voice": {
+      "name": "it will help you to send voice messages to your AI Assistant and also can make it talk",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=elevenlabs-voice",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "mission-control": {
+      "name": "Mission Control",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=mission-control",
+      "source": "skillhub",
+      "version": "2.3.1"
+    }
+  }
+}

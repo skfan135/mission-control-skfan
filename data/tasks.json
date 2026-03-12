@@ -1,0 +1,18 @@
+{
+  "tasks": [
+    {
+      "id": "welcome_001",
+      "title": "欢迎使用 Mission Control",
+      "description": "这是一个示例任务。拖拽任务卡片来改变状态。",
+      "status": "backlog",
+      "priority": "medium",
+      "subtasks": [
+        {"id": "sub_001", "title": "了解看板系统", "done": false},
+        {"id": "sub_002", "title": "尝试拖拽任务", "done": false}
+      ],
+      "dod": "成功操作看板并理解工作流",
+      "comments": [],
+      "createdAt": "2026-03-12T08:40:00Z"
+    }
+  ]
+}
