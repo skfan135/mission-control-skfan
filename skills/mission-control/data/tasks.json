@@ -24,8 +24,16 @@
         }
       ],
       "dod": "成功体验完整的工作流程",
-      "comments": [],
-      "createdAt": "2026-03-12T08:40:00Z"
+      "comments": [
+        {
+          "id": "c_1773308529049",
+          "author": "MoltBot",
+          "text": "🤖 Processing started",
+          "createdAt": "2026-03-12T17:42:09.049511Z"
+        }
+      ],
+      "createdAt": "2026-03-12T08:40:00Z",
+      "processingStartedAt": "2026-03-12T17:42:09.049511Z"
     },
     {
       "id": "setup_002",
