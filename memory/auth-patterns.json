@@ -18,7 +18,36 @@
       },
       "auto_fix": true,
       "requires_token": true
+    },
+    "connection_reset": {
+      "cause": "Network instability or HTTPS timeout",
+      "commands": ["git push", "git pull", "git clone"],
+      "solutions": {
+        "git_wrapper": "Use /root/.openclaw/workspace/scripts/git-wrapper.sh for automatic retry",
+        "config": "git config --global http.lowSpeedLimit 0",
+        "ssh_alternative": "git remote set-url origin git@github.com:user/repo.git"
+      },
+      "auto_fix": true,
+      "requires_token": false
+    },
+    "permission_denied": {
+      "cause": "Invalid or expired PAT token",
+      "commands": ["git push", "gh api"],
+      "solutions": {
+        "fix_auth": "Run /root/.openclaw/workspace/scripts/auto-fix-auth.sh github",
+        "check_status": "gh auth status",
+        "relogin": "echo \$GITHUB_TOKEN | gh auth login --with-token"
+      },
+      "auto_fix": true,
+      "requires_token": true
     }
   },
-  "fixes_applied": []
+  "fixes_applied": [
+    {
+      "timestamp": "2026-03-12T09:34:00Z",
+      "pattern": "connection_reset",
+      "solution": "automatic_retry",
+      "result": "success"
+    }
+  ]
 }
