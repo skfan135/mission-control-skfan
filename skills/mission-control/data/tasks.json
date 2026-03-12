@@ -30,6 +30,12 @@
           "author": "MoltBot",
           "text": "🤖 Processing started",
           "createdAt": "2026-03-12T17:42:09.049511Z"
+        },
+        {
+          "id": "c2",
+          "author": "MoltBot",
+          "text": "开始执行示例任务...",
+          "createdAt": "2026-03-12T17:42:10.752835Z"
         }
       ],
       "createdAt": "2026-03-12T08:40:00Z",
