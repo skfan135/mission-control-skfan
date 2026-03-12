@@ -57,6 +57,12 @@
           "author": "MoltBot",
           "text": "🤖 Processing started",
           "createdAt": "2026-03-12T17:49:07.782955Z"
+        },
+        {
+          "id": "c2",
+          "author": "MoltBot",
+          "text": "创建自动设置脚本，简化 webhook 配置流程",
+          "createdAt": "2026-03-12T17:49:30.472034Z"
         }
       ],
       "createdAt": "2026-03-12T09:28:00Z",
