@@ -47,7 +47,7 @@
         {
           "id": "sub_006",
           "title": "测试 webhook 连接",
-          "done": false
+          "done": true
         }
       ],
       "dod": "Webhook 生效，任务变更自动触发",
