@@ -31,7 +31,7 @@
       "id": "setup_002",
       "title": "🔧 设置 webhook 实时同步",
       "description": "配置 GitHub webhook，让任务变更实时触发 AI 执行。",
-      "status": "backlog",
+      "status": "review",
       "priority": "medium",
       "subtasks": [
         {
@@ -63,10 +63,15 @@
           "author": "MoltBot",
           "text": "创建自动设置脚本，简化 webhook 配置流程",
           "createdAt": "2026-03-12T17:49:30.472034Z"
+        },
+        {
+          "id": "c3",
+          "author": "MoltBot",
+          "text": "Webhook 自动设置脚本已完成，无需手动配置。包含自动生成 secret、创建 transform、更新配置等功能。",
+          "createdAt": "2026-03-12T17:50:14.320845Z"
         }
       ],
-      "createdAt": "2026-03-12T09:28:00Z",
-      "processingStartedAt": "2026-03-12T17:49:07.782955Z"
+      "createdAt": "2026-03-12T09:28:00Z"
     },
     {
       "id": "daily_003",
