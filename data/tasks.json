@@ -8,7 +8,7 @@
       "priority": "high",
       "subtasks": [
         {"id": "sub_001", "title": "理解任务状态含义", "done": false},
-        {"id": "sub_002", "title": "尝试拖拽任务到 In Progress", "done": false},
+        {"id": "sub_002", "title": "尝试拖拽任务到进行中", "done": false},
         {"id": "sub_003", "title": "观察 AI 自动执行任务", "done": false}
       ],
       "dod": "成功体验完整的工作流程",
@@ -34,15 +34,32 @@
       "id": "daily_003",
       "title": "📊 设置自动化日报",
       "description": "将 Mission Control 与日报系统集成，自动报告任务完成情况。",
-      "status": "permanent",
+      "status": "backlog",
       "priority": "low",
       "subtasks": [
         {"id": "sub_007", "title": "创建脚本提取任务统计", "done": false},
-        {"id": "sub_008", "title": "集成到 nightly cron", "done": false}
+        {"id": "sub_008", "title": "集成到夜间定时任务", "done": false}
       ],
       "dod": "日报包含任务完成状态",
       "comments": [],
       "createdAt": "2026-03-12T09:28:00Z"
+    },
+    {
+      "id": "lang_004",
+      "title": "🌐 完成中英迁移",
+      "description": "将英文版的所有任务数据迁移到中文版，并清理冗余文件。",
+      "status": "done",
+      "priority": "high",
+      "subtasks": [
+        {"id": "sub_009", "title": "备份英文版数据", "done": true},
+        {"id": "sub_010", "title": "创建中文版数据文件", "done": true},
+        {"id": "sub_011", "title": "修改中文版页面引用", "done": true},
+        {"id": "sub_012", "title": "删除英文版文件", "done": true}
+      ],
+      "dod": "只保留中文版，数据完整无丢失",
+      "comments": [],
+      "createdAt": "2026-03-12T09:37:00Z",
+      "completedAt": "2026-03-12T09:38:00Z"
     }
   ]
 }

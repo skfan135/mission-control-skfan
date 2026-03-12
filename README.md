@@ -5,7 +5,7 @@ AI 任务管理看板系统
 ## 快速开始
 
 1. 访问 [GitHub Pages](https://skfan135.github.io/mission-control-skfan/)
-2. 中文版直接访问：[中文版](https://skfan135.github.io/mission-control-skfan/index-zh.html)
+2. 界面已完全中文化
 3. 查看和拖拽任务卡片
 4. 任务状态会自动同步
 
