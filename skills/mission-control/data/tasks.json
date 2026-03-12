@@ -37,7 +37,7 @@
         {
           "id": "sub_004",
           "title": "生成 webhook secret",
-          "done": false
+          "done": true
         },
         {
           "id": "sub_005",
