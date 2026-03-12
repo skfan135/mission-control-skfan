@@ -51,8 +51,16 @@
         }
       ],
       "dod": "Webhook 生效，任务变更自动触发",
-      "comments": [],
-      "createdAt": "2026-03-12T09:28:00Z"
+      "comments": [
+        {
+          "id": "c_1773308947782",
+          "author": "MoltBot",
+          "text": "🤖 Processing started",
+          "createdAt": "2026-03-12T17:49:07.782955Z"
+        }
+      ],
+      "createdAt": "2026-03-12T09:28:00Z",
+      "processingStartedAt": "2026-03-12T17:49:07.782955Z"
     },
     {
       "id": "daily_003",
